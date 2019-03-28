@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>  
+<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: black;">
+    <a class="navbar-brand" href="#">Custom Search</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+        aria-expanded="false" aria-label="Toggle navigation"></button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home Page<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About us</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br><br>
+<form method = "POST">
+    <center><input type = "text" name = "sea" placeholder = "Search Here" style = "width:70% ;text-align:center"></center><br>
+   <center><input type = "submit" value = "Search"></center><br>
+</form>
+<div style = "background-color:#e6e6e6;"
+<div style = "margin:10px;color:black">
+    {% for link in data %}
+        <div style = "margin:10px">
+            <a href ={{ link['link'] }}>{{ link['title'] }}</a><br>
+            <span style = "margin : 15px">{{ link['snippet'] }}</span><br> 
+        </div>
+    <br>
+    {% endfor %}
+</div>
+<center><form><input type = "submit" value = "Next page"></center></form>
+</div>
+</body>
+</html>
