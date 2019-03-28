@@ -1,0 +1,26 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup</title>
+    <script>
+        var x = document.getElementById('pass').value;
+        var y = document.getElementById('cnpass').value;
+        if(x =! y)
+        {
+            alert("Re-enter your password");
+        }
+    </script>
+</head>
+<body style = "text-align: center">
+    <h2>Signup page</h2>
+    <form method = "POST">
+        <input type = "text" placeholder="Enter the username" name = "user" id = "user"><br>
+        <input type = "password" placeholder="Enter your password" name = "pass" id = "pass"><br>
+        <input type = "password" placeholder="Confirm yur password" name = "cnpass" id = "cnpass"><br>
+        <input type="submit" value = "Register">
+    </form>
+    {%for l in t%}
+        {{l}}
+    {%endfor%}
+</body>
+</html>
