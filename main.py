@@ -24,9 +24,6 @@ def index():
         return render_template('front.html' , data = getresult(request.form['sea']))
     return render_template('front.html')
 
-@app.route('/login')
-def login():
-    return render_template('login.html')
 
 @app.route('/signup',methods = ['GET','POST'])
 def signup():
@@ -38,6 +35,34 @@ def signup():
         tempo = temp.val()
         return render_template('signup.html',t = tempo.values())
     return render_template('signup.html')
+
+@app.route("/login",methods = ['POST','GET'])
+def login():
+    if request.method == "POST":
+        lname = request.form['luser']
+        lpass = request.form['lpass']
+        getname = db.child('sign').get()
+        get1 = getname.val()
+        x = get1.values()
+        user = str(lname)
+        pasw = str(lpass)
+        loggedIn = False
+        for i in x:
+            try:
+                if i[user] == pasw:
+                    loggedIn = True
+                break
+            except:
+                pass    
+        print(loggedIn)
+        if loggedIn == True:
+            return render_template('login.html',l = "Logged in")
+        else:
+            return render_template('login.html',l= "Incorrect password")
+        return render_template('login.html')
+    return render_template('login.html')
+
+
 
 if __name__ == '__main__':
     app.run(debug= True)
